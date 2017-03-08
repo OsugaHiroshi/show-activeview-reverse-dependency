@@ -14,3 +14,8 @@ test('findFilesByGitGrep', async t => {
   t.is(files.length, 1);
   t.is(files[0], 'fixture/B/_b.txt');
 });
+
+test('findFilesByGitGrep but no files found', async t => {
+  const files = await findFilesByGitGrep('D/d', './fixture');
+  t.is(files, null);
+});
