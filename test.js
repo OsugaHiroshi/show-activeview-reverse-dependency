@@ -30,3 +30,14 @@ test('traverse', async t => {
   t.is(node.children[0].children.length, 1);
   t.is(node.children[0].children[0].path, 'fixture/C/c.txt');
 });
+
+test('traverse with multi parens', async t => {
+  const node = await traverse( new Node('./fixture/multi_parents/A/_aa.txt'), './fixture/multi_parents');
+
+  t.is(node.path, './fixture/multi_parents/A/_aa.txt');
+  t.is(node.children.length, 1)
+  t.is(node.children[0].path, 'fixture/multi_parents/B/_bb.txt');
+  t.is(node.children[0].children.length, 2);
+  t.is(node.children[0].children[0].path, 'fixture/multi_parents/C/c.txt');
+  t.is(node.children[0].children[1].path, 'fixture/multi_parents/D/d.txt');
+});
