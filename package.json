@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "ava"
+  },
   "dependencies": {
+    "ava": "^0.18.2",
     "commander": "^2.9.0",
     "node-spawn-util": "https://github.com/umezo/node-spawn-util.git"
   }
