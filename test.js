@@ -1,7 +1,9 @@
 const test = require('ava');
 const {
   convertToActiveViewPartialSpecifiedString,
-  findFilesByGitGrep
+  findFilesByGitGrep,
+  Node,
+  traverse
 } = require('./lib');
 
 test('convertToActiveViewPartialSpecifiedString', t => {
@@ -18,4 +20,13 @@ test('findFilesByGitGrep', async t => {
 test('findFilesByGitGrep but no files found', async t => {
   const files = await findFilesByGitGrep('D/d', './fixture');
   t.is(files, null);
+});
+
+test('traverse', async t => {
+  const node = await traverse( new Node('./fixture/A/_a.txt'), './fixture');
+  t.is(node.path, './fixture/A/_a.txt');
+  t.is(node.children.length, 1)
+  t.is(node.children[0].path, 'fixture/B/_b.txt');
+  t.is(node.children[0].children.length, 1);
+  t.is(node.children[0].children[0].path, 'fixture/C/c.txt');
 });
