@@ -1,5 +1,6 @@
 {
-  "name": "show-activeview-reverse-render-tree",
+  "name": "show-activeview-reverse-dependency",
+  "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
